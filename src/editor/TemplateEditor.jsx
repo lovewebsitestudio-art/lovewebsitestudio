@@ -36,7 +36,7 @@ export default function TemplateEditor({ templateEntry, siteId = "demo" }) {
         } catch {
             /* ignore */
         }
-        return structuredClone(defaultDataFromSchema);
+        return JSON.parse(JSON.stringify(defaultDataFromSchema || {}));
     }, [slug, siteId, defaultDataFromSchema]);
 
     const [content, setContent] = useState(initialContent);
@@ -61,7 +61,7 @@ export default function TemplateEditor({ templateEntry, siteId = "demo" }) {
     }, [content, slug, siteId]);
 
     const handleConfirmReset = () => {
-        setContent(structuredClone(defaultDataFromSchema));
+        setContent(JSON.parse(JSON.stringify(defaultDataFromSchema || {})));
         try {
             localStorage.removeItem(DRAFT_KEY(slug, siteId));
         } catch {
