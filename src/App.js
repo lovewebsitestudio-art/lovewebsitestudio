@@ -12,6 +12,8 @@ import EditorPage from "@/pages/EditorPage";
 import ViewWebsitePage from "@/pages/ViewWebsitePage";
 import NotFoundPage from "@/pages/NotFoundPage";
 
+import ErrorBoundary from "@/components/ErrorBoundary";
+
 function ScrollToTop() {
     const { pathname } = useLocation();
     useEffect(() => {
@@ -19,8 +21,6 @@ function ScrollToTop() {
     }, [pathname]);
     return null;
 }
-
-import ErrorBoundary from "@/components/ErrorBoundary";
 
 function Shell({ children, hideFooter = false }) {
     return (
